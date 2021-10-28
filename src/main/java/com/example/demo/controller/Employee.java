@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,15 +46,55 @@ public class Employee {
 //        return "admin/index";
 //    }
 
+    //http://localhost:8080/api/v1/admin/employees?page=1&size=10
     @GetMapping
     public BaseResponse findAllEmployee(@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size){
         try{
             int currentPage = page.orElse(1);
             int pageSize = size.orElse(10);
             Pageable pageable = PageRequest.of(currentPage-1,pageSize);
-            Page<CongNhan> congNhanPage = congNhanService.findAll(pageable);
+            Page<CongNhan> congNhanPage = congNhanService.findAllPageable(pageable);
             List<CongNhan> congNhans = congNhanPage.getContent();
-            return new DataResponse(true,congNhans);
+            return new DataResponse(true,congNhans,congNhanService.findAll().size());
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
+
+    //http://localhost:8080/api/v1/admin/employees
+    @PostMapping
+    public BaseResponse insertEmployee(@RequestBody CongNhan congNhan){
+        try{
+            return new MessageResponse(true,congNhanService.insert(congNhan));
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
+
+    //http://localhost:8080/api/v1/admin/employees
+    @PutMapping
+    public BaseResponse updateEmployee(@RequestBody CongNhan congNhan){
+        try{
+            return new MessageResponse(true,congNhanService.update(congNhan));
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
+
+    //http://localhost:8080/api/v1/admin/employees/{id}/delete
+    @DeleteMapping("/{id}/delete")
+    public BaseResponse deleteEmployee(@PathVariable(name = "id") String id){
+        try{
+            return new MessageResponse(true,congNhanService.delete(id));
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
+    //http://localhost:8080/api/v1/admin/employees/{s}/search
+    @GetMapping("/{s}/search")
+    public BaseResponse findAllContainByIdOrName(@PathVariable(name = "s") String s){
+        try{
+            return new DataResponse(true,congNhanService.findAllContainByIdOrName(s),congNhanService.findAllContainByIdOrName(s).size());
         }catch (Exception e){
             return new MessageResponse(false,"false");
         }
