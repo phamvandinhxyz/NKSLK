@@ -18,44 +18,37 @@ public class CongNhanService {
     private final String SUCCESS = "success";
     private final String FAIL = "fail";
 
-    public Page<CongNhan> findAllPageable(Pageable pageable){
+    public Page<CongNhan> findAllPageable(Pageable pageable) {
         return congNhanRepository.findAll(pageable);
     }
-    public List<CongNhan> findAll(){
+
+    public List<CongNhan> findAll() {
         return congNhanRepository.findAll();
     }
-    public String insert(CongNhan congNhan){
-        try{
-            congNhanRepository.save(congNhan);
-            return SUCCESS;
-        }catch (Exception e){
-            return FAIL;
-        }
+
+    public String insert(CongNhan congNhan) {
+        congNhanRepository.save(congNhan);
+        return SUCCESS;
     }
-    public String update(CongNhan congNhan){
-        try{
-            congNhanRepository.save(congNhan);
-            return SUCCESS;
-        }catch (Exception e){
-            return FAIL;
-        }
+
+    public String update(CongNhan congNhan) {
+        congNhanRepository.save(congNhan);
+        return SUCCESS;
     }
-    public String delete(String id){
-        try{
-            congNhanRepository.deleteById(id);
-            return SUCCESS;
-        }catch (Exception e){
-            return FAIL;
-        }
+
+    public String delete(String id) {
+        congNhanRepository.deleteById(id);
+        return SUCCESS;
     }
-    public List<CongNhan> findAllContainByIdOrName(String s){
-        List<CongNhan> congNhanResult=new ArrayList<>();
-        List<CongNhan> congNhans=congNhanRepository.findAll();
+
+    public List<CongNhan> findAllContainByIdOrName(String s) {
+        List<CongNhan> congNhanResult = new ArrayList<>();
+        List<CongNhan> congNhans = congNhanRepository.findAll();
         congNhans.forEach(congNhan -> {
-            if(congNhan.getMaCongNhan().contains(s) || congNhan.getHoTen().contains(s)){
+            if (congNhan.getMaCongNhan().contains(s) || congNhan.getHoTen().contains(s)) {
                 congNhanResult.add(congNhan);
             }
         });
-        return  congNhanResult;
+        return congNhanResult;
     }
 }
