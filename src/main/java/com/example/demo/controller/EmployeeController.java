@@ -5,6 +5,7 @@ import com.example.demo.repository.CongNhanRepository;
 import com.example.demo.response.BaseResponse;
 import com.example.demo.response.DataResponse;
 import com.example.demo.response.MessageResponse;
+import com.example.demo.response.ObjectResponse;
 import com.example.demo.service.CongNhanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/admin/employees")
-public class Employee {
+public class EmployeeController {
     @Autowired
     private CongNhanService congNhanService;
 
@@ -56,6 +57,16 @@ public class Employee {
             Page<CongNhan> congNhanPage = congNhanService.findAllPageable(pageable);
             List<CongNhan> congNhans = congNhanPage.getContent();
             return new DataResponse(true,congNhans,congNhanService.findAll().size());
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
+
+    //http://localhost:8080/api/v1/admin/employees/{id}
+    @GetMapping("/{id}")
+    public BaseResponse findNKSLKByMaNKSLK(@PathVariable(name = "id") String id){
+        try{
+            return new ObjectResponse(true,congNhanService.findByMaCongNhan(id));
         }catch (Exception e){
             return new MessageResponse(false,"false");
         }

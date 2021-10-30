@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.models.CongNhan;
+import com.example.demo.models.NKSLK;
 import com.example.demo.repository.CongNhanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CongNhanService {
@@ -24,6 +26,10 @@ public class CongNhanService {
 
     public List<CongNhan> findAll() {
         return congNhanRepository.findAll();
+    }
+
+    public Optional<CongNhan> findByMaCongNhan(String id){
+        return congNhanRepository.findById(id);
     }
 
     public String insert(CongNhan congNhan) {
