@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.models.CongNhan;
+import com.example.demo.models.customs.WorkDayResult;
 import com.example.demo.repository.CongNhanRepository;
 import com.example.demo.response.BaseResponse;
 import com.example.demo.response.DataResponse;
@@ -106,6 +107,17 @@ public class EmployeeController {
     public BaseResponse findAllContainByIdOrName(@PathVariable(name = "s") String s){
         try{
             return new DataResponse(true,congNhanService.findAllContainByIdOrName(s),congNhanService.findAllContainByIdOrName(s).size());
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
+
+    //http://localhost:8080/api/v1/admin/employees/workday
+    @GetMapping("/workday")
+    public BaseResponse getWorkDayEmployee(){
+        try{
+            List<WorkDayResult> workDayResults = congNhanService.getWorkDayEmployee();
+            return new DataResponse(true,workDayResults,workDayResults.size());
         }catch (Exception e){
             return new MessageResponse(false,"false");
         }

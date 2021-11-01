@@ -2,12 +2,14 @@ package com.example.demo.service;
 
 import com.example.demo.models.CongNhan;
 import com.example.demo.models.NKSLK;
+import com.example.demo.models.customs.WorkDayResult;
 import com.example.demo.repository.CongNhanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,5 +58,20 @@ public class CongNhanService {
             }
         });
         return congNhanResult;
+    }
+
+    public List<WorkDayResult> getWorkDayEmployee(){
+        List<WorkDayResult> workDayResults = new ArrayList<>();
+        try {
+            List<Object> objects = congNhanRepository.getWorkDayEmployee();
+            objects.forEach(o -> {
+                Object[] ox = (Object[]) o;
+                BigDecimal tongNgayCong = (BigDecimal) ox[2];
+                workDayResults.add(new WorkDayResult((String) ox[0],(String) ox[1], tongNgayCong.floatValue() ));
+            });
+            return workDayResults;
+        }catch (Exception e){
+            return workDayResults;
+        }
     }
 }
