@@ -31,4 +31,31 @@ public class ThongKeService {
         SLCongNhan.put("luongSanPhamThapNhat",luongSanPhamThapNhat);
         return SLCongNhan;
     }
+
+    public HashMap<Object,Object> luongCongNhanTrongNam(int year){
+        HashMap<Object,Object> luongCongNhan = initLuongTrongNam();
+        List<Object> luongCongNhanResult=danhMucCongViecRepository.luongCongNhanTrongNam(year);
+        luongCongNhanResult.forEach(o -> {
+            Object[] objects= (Object[]) o;
+            luongCongNhan.put((int)objects[0],(Double)objects[1]);
+        });
+        return luongCongNhan;
+    }
+
+    public HashMap<Object,Object> initLuongTrongNam(){
+        HashMap<Object,Object> luong = new HashMap<Object, Object>();
+        luong.put(1,0);
+        luong.put(2,0);
+        luong.put(3,0);
+        luong.put(4,0);
+        luong.put(5,0);
+        luong.put(6,0);
+        luong.put(7,0);
+        luong.put(8,0);
+        luong.put(9,0);
+        luong.put(10,0);
+        luong.put(11,0);
+        luong.put(12,0);
+        return  luong;
+    }
 }
