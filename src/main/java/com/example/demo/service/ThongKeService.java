@@ -42,6 +42,13 @@ public class ThongKeService {
         return luongCongNhan;
     }
 
+    public HashMap<Object,Object> soLuongCongNhanChungRieng(){
+        HashMap<Object,Object> hashMapSLCNCR = new HashMap<>();
+        hashMapSLCNCR.put("soLuongCongNhanLamRieng",congNhanRepository.soLuongCongNhanLamRieng());
+        hashMapSLCNCR.put("soLuongCongNhanLamChung",congNhanRepository.soLuongCongNhanLamChung());
+        return hashMapSLCNCR;
+    }
+
     public HashMap<Object,Object> initLuongTrongNam(){
         HashMap<Object,Object> luong = new HashMap<Object, Object>();
         luong.put(1,0);
