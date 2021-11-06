@@ -40,4 +40,14 @@ public class ThongkeController {
             return new MessageResponse(false,"false");
         }
     }
+
+    //http://localhost:8080/api/v1/admin/thongke/soLuongCongNhanChungRieng
+    @GetMapping("/soLuongCongNhanChungRieng")
+    public BaseResponse soLuongCongNhanChungRieng(){
+        try{
+            return new ObjectResponse(true,thongKeService.soLuongCongNhanChungRieng());
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
 }

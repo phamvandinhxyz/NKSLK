@@ -13,4 +13,10 @@ public interface CongNhanRepository extends JpaRepository<CongNhan, String> {
 
     @Query(value = "{CALL Get_Work_Day_Employee()}", nativeQuery = true)
     List<Object> getWorkDayEmployee();
+
+    @Query(value = "{CALL So_Luong_Cong_Nhan_Lam_Rieng()}", nativeQuery = true)
+    Object soLuongCongNhanLamRieng();
+
+    @Query(value = "{CALL So_Luong_Cong_Nhan_Lam_Chung()}", nativeQuery = true)
+    Object soLuongCongNhanLamChung();
 }
