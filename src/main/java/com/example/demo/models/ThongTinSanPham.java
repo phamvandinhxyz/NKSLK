@@ -12,7 +12,7 @@ public class ThongTinSanPham {
     private String MaSanPham;
     private String TenSanPham;
     private String SoDangKy;
-    private LocalDateTime HanSuDung;
+    private LocalDate HanSuDung;
     private String QuyCach;
     private LocalDate NgayDangKy;
     private LocalDate NgaySanXuat;
@@ -26,7 +26,7 @@ public class ThongTinSanPham {
         super();
     }
 
-    public ThongTinSanPham(String maSanPham, String tenSanPham, String soDangKy, LocalDateTime hanSuDung, String quyCach, LocalDate ngayDangKy, LocalDate ngaySanXuat, List<DauMucCongViec> dauMucCongViecs) {
+    public ThongTinSanPham(String maSanPham, String tenSanPham, String soDangKy, LocalDate hanSuDung, String quyCach, LocalDate ngayDangKy, LocalDate ngaySanXuat) {
         MaSanPham = maSanPham;
         TenSanPham = tenSanPham;
         SoDangKy = soDangKy;
@@ -34,7 +34,6 @@ public class ThongTinSanPham {
         QuyCach = quyCach;
         NgayDangKy = ngayDangKy;
         NgaySanXuat = ngaySanXuat;
-        this.dauMucCongViecs = dauMucCongViecs;
     }
 
     public String getMaSanPham() {
@@ -61,11 +60,11 @@ public class ThongTinSanPham {
         SoDangKy = soDangKy;
     }
 
-    public LocalDateTime getHanSuDung() {
+    public LocalDate getHanSuDung() {
         return HanSuDung;
     }
 
-    public void setHanSuDung(LocalDateTime hanSuDung) {
+    public void setHanSuDung(LocalDate hanSuDung) {
         HanSuDung = hanSuDung;
     }
 
