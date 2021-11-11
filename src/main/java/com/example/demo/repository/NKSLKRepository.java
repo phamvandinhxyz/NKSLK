@@ -17,4 +17,5 @@ public interface NKSLKRepository extends JpaRepository<NKSLK,String> {
     @Query(value = "{CALL NKSLK_In_Week_Employee(:week,:maCongNhan)}", nativeQuery = true)
     List<Object> NKSLKInWeekEmployee(@Param("week") LocalDate week, @Param("maCongNhan") String maCongNhan);
 
+    List<NKSLK> findNKSLKByMaNKSLKContains(String s);
 }

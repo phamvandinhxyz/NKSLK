@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @Table
 public class NKSLK {
     @Id
-    private String MaNKSLK;
+    private String maNKSLK;
     private LocalDate NgayThucHien;
     private LocalTime GioBatDau;
     private LocalTime GioKetThuc;
@@ -22,7 +22,7 @@ public class NKSLK {
     }
 
     public NKSLK(String maNKSLK, LocalDate ngayThucHien, LocalTime gioBatDau, LocalTime gioKetThuc, String danhMucNhanCong, String danhMucCongViecDaLam) {
-        MaNKSLK = maNKSLK;
+        maNKSLK = maNKSLK;
         NgayThucHien = ngayThucHien;
         GioBatDau = gioBatDau;
         GioKetThuc = gioKetThuc;
@@ -31,11 +31,11 @@ public class NKSLK {
     }
 
     public String getMaNKSLK() {
-        return MaNKSLK;
+        return maNKSLK;
     }
 
     public void setMaNKSLK(String maNKSLK) {
-        MaNKSLK = maNKSLK;
+        maNKSLK = maNKSLK;
     }
 
     public LocalDate getNgayThucHien() {
