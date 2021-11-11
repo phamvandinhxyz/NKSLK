@@ -5,9 +5,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface CongNhanRepository extends JpaRepository<CongNhan, String> {
     Page<CongNhan> findAll(Pageable pageable);
 
@@ -19,4 +20,6 @@ public interface CongNhanRepository extends JpaRepository<CongNhan, String> {
 
     @Query(value = "{CALL So_Luong_Cong_Nhan_Lam_Chung()}", nativeQuery = true)
     Object soLuongCongNhanLamChung();
+
+    List<CongNhan> findCongNhanBymaDanhMucCongNhan(String maDanhMucCongNhan);
 }

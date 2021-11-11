@@ -34,6 +34,10 @@ public class CongNhanService {
         return congNhanRepository.findById(id);
     }
 
+    public List<CongNhan> findCongNhanByMaDanhMucCongNhan(String id){
+        return congNhanRepository.findCongNhanBymaDanhMucCongNhan(id);
+    }
+
     public String insert(CongNhan congNhan) {
         congNhanRepository.save(congNhan);
         return SUCCESS;

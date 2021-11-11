@@ -31,8 +31,8 @@ public class NKSLKService {
         return nkslkRepository.findAll(pageable);
     }
 
-    public Optional<NKSLK> findNKSLKByMaNKSLK(String id){
-        return nkslkRepository.findById(id);
+    public List<NKSLK> findNKSLKByMaNKSLK(String id){
+        return nkslkRepository.findNKSLKByMaNKSLKContains(id);
     }
 
     public String insert(NKSLK nkslk) {

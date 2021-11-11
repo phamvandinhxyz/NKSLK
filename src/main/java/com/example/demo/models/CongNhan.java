@@ -21,7 +21,7 @@ public class CongNhan {
     private long LuongBaoHiem;
     private LocalTime GioBatDau;
     private LocalTime GioKetThuc;
-    private String MaDanhMucCongNhan;
+    private String maDanhMucCongNhan;
 
     public CongNhan() {
         super();
@@ -39,7 +39,7 @@ public class CongNhan {
         LuongBaoHiem = luongBaoHiem;
         GioBatDau = gioBatDau;
         GioKetThuc = gioKetThuc;
-        MaDanhMucCongNhan = maDanhMucCongNhan;
+        maDanhMucCongNhan = maDanhMucCongNhan;
     }
 
     public String getMaCongNhan() {
@@ -131,10 +131,10 @@ public class CongNhan {
     }
 
     public String getMaDanhMucCongNhan() {
-        return MaDanhMucCongNhan;
+        return maDanhMucCongNhan;
     }
 
     public void setMaDanhMucCongNhan(String maDanhMucCongNhan) {
-        MaDanhMucCongNhan = maDanhMucCongNhan;
+        maDanhMucCongNhan = maDanhMucCongNhan;
     }
 }
