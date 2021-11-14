@@ -9,11 +9,11 @@ public class DanhMucCongViec {
     @Id
     private String MaCongViec;
     private String TenCongViec;
-    private long DinhMucKhoan;
+    private float DinhMucKhoan;
     private String DonViKhoan;
-    private long HeSoKhoan;
-    private long DinhMucLaoDong;
-    private long DonGia;
+    private float HeSoKhoan;
+    private float DinhMucLaoDong;
+    private float DonGia;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "DanhMucCongViecDaLam")
@@ -27,7 +27,7 @@ public class DanhMucCongViec {
         super();
     }
 
-    public DanhMucCongViec(String maCongViec, String tenCongViec, long dinhMucKhoan, String donViKhoan, long heSoKhoan, long dinhMucLaoDong, long donGia, List<NKSLK> nkslks, List<DauMucCongViec> dauMucCongViecs) {
+    public DanhMucCongViec(String maCongViec, String tenCongViec, float dinhMucKhoan, String donViKhoan, float heSoKhoan, float dinhMucLaoDong, float donGia, List<NKSLK> nkslks, List<DauMucCongViec> dauMucCongViecs) {
         MaCongViec = maCongViec;
         TenCongViec = tenCongViec;
         DinhMucKhoan = dinhMucKhoan;
@@ -55,11 +55,11 @@ public class DanhMucCongViec {
         TenCongViec = tenCongViec;
     }
 
-    public long getDinhMucKhoan() {
+    public float getDinhMucKhoan() {
         return DinhMucKhoan;
     }
 
-    public void setDinhMucKhoan(long dinhMucKhoan) {
+    public void setDinhMucKhoan(float dinhMucKhoan) {
         DinhMucKhoan = dinhMucKhoan;
     }
 
@@ -71,27 +71,27 @@ public class DanhMucCongViec {
         DonViKhoan = donViKhoan;
     }
 
-    public long getHeSoKhoan() {
+    public float getHeSoKhoan() {
         return HeSoKhoan;
     }
 
-    public void setHeSoKhoan(long heSoKhoan) {
+    public void setHeSoKhoan(float heSoKhoan) {
         HeSoKhoan = heSoKhoan;
     }
 
-    public long getDinhMucLaoDong() {
+    public float getDinhMucLaoDong() {
         return DinhMucLaoDong;
     }
 
-    public void setDinhMucLaoDong(long dinhMucLaoDong) {
+    public void setDinhMucLaoDong(float dinhMucLaoDong) {
         DinhMucLaoDong = dinhMucLaoDong;
     }
 
-    public long getDonGia() {
+    public float getDonGia() {
         return DonGia;
     }
 
-    public void setDonGia(long donGia) {
+    public void setDonGia(float donGia) {
         DonGia = donGia;
     }
 
