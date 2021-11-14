@@ -21,8 +21,8 @@ public class NKSLK {
         super();
     }
 
-    public NKSLK(String maNKSLK, LocalDate ngayThucHien, LocalTime gioBatDau, LocalTime gioKetThuc, String danhMucNhanCong, String danhMucCongViecDaLam) {
-        maNKSLK = maNKSLK;
+    public NKSLK(String MaNKSLK, LocalDate ngayThucHien, LocalTime gioBatDau, LocalTime gioKetThuc, String danhMucNhanCong, String danhMucCongViecDaLam) {
+        maNKSLK = MaNKSLK;
         NgayThucHien = ngayThucHien;
         GioBatDau = gioBatDau;
         GioKetThuc = gioKetThuc;
@@ -34,8 +34,8 @@ public class NKSLK {
         return maNKSLK;
     }
 
-    public void setMaNKSLK(String maNKSLK) {
-        maNKSLK = maNKSLK;
+    public void setMaNKSLK(String MaNKSLK) {
+        maNKSLK = MaNKSLK;
     }
 
     public LocalDate getNgayThucHien() {

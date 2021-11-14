@@ -80,6 +80,7 @@ public class NKSLKController {
         }
     }
 
+
     //http://localhost:8080/api/v1/admin/nkslk/{id}/delete
     @DeleteMapping("/{id}/delete")
     public BaseResponse deleteNKSLK(@PathVariable(name = "id") String id){
