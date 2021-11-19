@@ -147,4 +147,47 @@ public class NKSLKController {
             return new MessageResponse(false,"false");
         }
     }
+
+    //http://localhost:8080/api/v1/admin/nkslk/{type}/{s}/filter
+    //1: Tuan, 2: Thang, 3: Nam
+    @GetMapping("/{type}/{s}/filter")
+    public BaseResponse NKSLKNam(@PathVariable(name = "type")int type,@PathVariable(name = "s")String s,@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size){
+        try {
+            List<NKSLK> nkslks = new ArrayList<>();
+            switch (type){
+                case 1:
+                {
+                    nkslks = nkslkService.NKSLKTuan(LocalDate.parse(s));
+                    break;
+                }
+                case 2:
+                {
+                    nkslks = nkslkService.NKSLKThang(LocalDate.parse(s));
+                    break;
+                }
+                case 3:
+                {
+                    nkslks =nkslkService.NKSLKNam(LocalDate.parse(s));
+                    break;
+                }
+                default: break;
+            }
+            List<ThongTinNKSLK> thongTinNKSLKSNam = new ArrayList<>();
+            nkslks.forEach(nkslk -> {
+                if(nkslk.getDanhMucCongViecDaLam() == null){
+                    thongTinNKSLKSNam.add(new ThongTinNKSLK(nkslk,null,congNhanService.findCongNhanByMaDanhMucCongNhan(nkslk.getDanhMucNhanCong())));
+                }else {
+                    thongTinNKSLKSNam.add(new ThongTinNKSLK(nkslk,danhMucCongViecRepository.findById(nkslk.getDanhMucCongViecDaLam()).get(),congNhanService.findCongNhanByMaDanhMucCongNhan(nkslk.getDanhMucNhanCong())));
+                }
+            });
+            int currentPage = page.orElse(0);
+            int pageSize = size.orElse(5);
+            if((currentPage*pageSize)+pageSize > thongTinNKSLKSNam.size()){
+                return new DataResponse(true,thongTinNKSLKSNam.subList(currentPage*pageSize,thongTinNKSLKSNam.size()),nkslks.size());
+            }else
+                return new DataResponse(true,thongTinNKSLKSNam.subList(currentPage*pageSize,(currentPage*pageSize)+pageSize),nkslks.size());
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
 }

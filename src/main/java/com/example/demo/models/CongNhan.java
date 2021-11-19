@@ -27,7 +27,7 @@ public class CongNhan {
         super();
     }
 
-    public CongNhan(String maCongNhan, String hoTen, LocalDate ngayNamSinh, String phongBan, String chucVu, String queQuan, String gioiTinh, long luongHopDong, long luongBaoHiem, LocalTime gioBatDau, LocalTime gioKetThuc, String maDanhMucCongNhan) {
+    public CongNhan(String maCongNhan, String hoTen, LocalDate ngayNamSinh, String phongBan, String chucVu, String queQuan, String gioiTinh, long luongHopDong, long luongBaoHiem, LocalTime gioBatDau, LocalTime gioKetThuc, String MaDanhMucCongNhan) {
         MaCongNhan = maCongNhan;
         HoTen = hoTen;
         NgayNamSinh = ngayNamSinh;
@@ -39,7 +39,7 @@ public class CongNhan {
         LuongBaoHiem = luongBaoHiem;
         GioBatDau = gioBatDau;
         GioKetThuc = gioKetThuc;
-        maDanhMucCongNhan = maDanhMucCongNhan;
+        maDanhMucCongNhan = MaDanhMucCongNhan;
     }
 
     public String getMaCongNhan() {
@@ -134,7 +134,7 @@ public class CongNhan {
         return maDanhMucCongNhan;
     }
 
-    public void setMaDanhMucCongNhan(String maDanhMucCongNhan) {
-        maDanhMucCongNhan = maDanhMucCongNhan;
+    public void setMaDanhMucCongNhan(String MaDanhMucCongNhan) {
+        maDanhMucCongNhan = MaDanhMucCongNhan;
     }
 }
