@@ -63,6 +63,22 @@ public class EmployeeController {
         }
     }
 
+    //http://localhost:8080/api/v1/admin/employees/emptydmcn?page=0&size=5
+    @GetMapping("/emptydmcn")
+    public BaseResponse findAllEmployeeEmptyDMCN(@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size){
+        try{
+            int currentPage = page.orElse(0);
+            int pageSize = size.orElse(5);
+            List<CongNhan> congNhans = congNhanService.findAllEmployeeEmptyDMCN();
+            if((currentPage*pageSize)+pageSize > congNhans.size()){
+                return new DataResponse(true,congNhans.subList(currentPage*pageSize,congNhans.size()),congNhans.size());
+            }else
+                return new DataResponse(true,congNhans.subList(currentPage*pageSize,(currentPage*pageSize)+pageSize),congNhans.size());
+        }catch (Exception e){
+            return new MessageResponse(false,"false");
+        }
+    }
+
     //http://localhost:8080/api/v1/admin/employees/{id}
     @GetMapping("/{id}")
     public BaseResponse findNKSLKByMaNKSLK(@PathVariable(name = "id") String id){

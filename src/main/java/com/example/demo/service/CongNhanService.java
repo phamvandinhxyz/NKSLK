@@ -26,6 +26,10 @@ public class CongNhanService {
         return congNhanRepository.findAll(pageable);
     }
 
+    public List<CongNhan> findAllEmployeeEmptyDMCN() {
+        return congNhanRepository.findAllEmployeeEmptyDMCN();
+    }
+
     public List<CongNhan> findAll() {
         return congNhanRepository.findAll();
     }

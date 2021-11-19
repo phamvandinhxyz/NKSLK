@@ -111,4 +111,34 @@ public class NKSLKService {
             return nkSLKEmployeeResults;
         }
     }
+
+    public List<NKSLK> NKSLKNam(LocalDate nam){
+        List<NKSLK> nkslkNam=new ArrayList<>();
+        try{
+            nkslkNam = nkslkRepository.NKSLKNam(nam);
+            return nkslkNam;
+        }catch (Exception e){
+            return nkslkNam;
+        }
+    }
+
+    public List<NKSLK> NKSLKThang(LocalDate thang){
+        List<NKSLK> nkslkNam=new ArrayList<>();
+        try{
+            nkslkNam = nkslkRepository.NKSLKThang(thang);
+            return nkslkNam;
+        }catch (Exception e){
+            return nkslkNam;
+        }
+    }
+
+    public List<NKSLK> NKSLKTuan(LocalDate tuan){
+        List<NKSLK> nkslkNam=new ArrayList<>();
+        try{
+            nkslkNam = nkslkRepository.NKSLKTuan(tuan);
+            return nkslkNam;
+        }catch (Exception e){
+            return nkslkNam;
+        }
+    }
 }

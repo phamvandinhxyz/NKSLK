@@ -22,4 +22,7 @@ public interface CongNhanRepository extends JpaRepository<CongNhan, String> {
     Object soLuongCongNhanLamChung();
 
     List<CongNhan> findCongNhanBymaDanhMucCongNhan(String maDanhMucCongNhan);
+
+    @Query(value = "SELECT * FROM dbo.CongNhan U WHERE u.MaDanhMucCongNhan IS NULL", nativeQuery = true)
+    List<CongNhan> findAllEmployeeEmptyDMCN();
 }
