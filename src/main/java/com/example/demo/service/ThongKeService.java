@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
+import com.example.demo.models.customs.BangLuongSanPhamResult;
 import com.example.demo.repository.CongNhanRepository;
 import com.example.demo.repository.DanhMucCongViecRepository;
 import com.example.demo.repository.ThongTinSanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,5 +66,77 @@ public class ThongKeService {
         luong.put(11,0);
         luong.put(12,0);
         return  luong;
+    }
+
+     public List<BangLuongSanPhamResult> bangLuongSanPhamNam(LocalDate nam){
+        List<BangLuongSanPhamResult> blsp = new ArrayList<>();
+        try{
+            danhMucCongViecRepository.bangLuongSanPhamNam(nam).forEach(o -> {
+                Object[] ox = (Object []) o;
+                String ngaySinh = ox[4].toString();
+                String ngayThucHien = ox[1].toString();
+                blsp.add(new BangLuongSanPhamResult((String) ox[0],LocalDate.parse(ngayThucHien),
+                        (String) ox[2],(String) ox[3],LocalDate.parse(ngaySinh),
+                        (String) ox[5],(String) ox[6],
+                        (String) ox[13], (Integer) ox[14],(Double) ox[15]));
+            });
+            return blsp;
+        }catch (Exception e){
+            return blsp;
+        }
+    }
+
+    public List<BangLuongSanPhamResult> bangLuongSanPhamthang(LocalDate nam){
+        List<BangLuongSanPhamResult> blsp = new ArrayList<>();
+        try{
+            danhMucCongViecRepository.bangLuongSanPhamThang(nam).forEach(o -> {
+                Object[] ox = (Object []) o;
+                String ngaySinh = ox[4].toString();
+                String ngayThucHien = ox[1].toString();
+                blsp.add(new BangLuongSanPhamResult((String) ox[0],LocalDate.parse(ngayThucHien),
+                        (String) ox[2],(String) ox[3],LocalDate.parse(ngaySinh),
+                        (String) ox[5],(String) ox[6],
+                        (String) ox[13], (Integer) ox[14],(Double) ox[15]));
+            });
+            return blsp;
+        }catch (Exception e){
+            return blsp;
+        }
+    }
+
+    public List<BangLuongSanPhamResult> bangLuongSanPhamTuan(LocalDate nam){
+        List<BangLuongSanPhamResult> blsp = new ArrayList<>();
+        try{
+            danhMucCongViecRepository.bangLuongSanPhamTuan(nam).forEach(o -> {
+                Object[] ox = (Object []) o;
+                String ngaySinh = ox[4].toString();
+                String ngayThucHien = ox[1].toString();
+                blsp.add(new BangLuongSanPhamResult((String) ox[0],LocalDate.parse(ngayThucHien),
+                        (String) ox[2],(String) ox[3],LocalDate.parse(ngaySinh),
+                        (String) ox[5],(String) ox[6],
+                        (String) ox[13], (Integer) ox[14],(Double) ox[15]));
+            });
+            return blsp;
+        }catch (Exception e){
+            return blsp;
+        }
+    }
+
+    public List<BangLuongSanPhamResult> bangLuongSanPham(){
+        List<BangLuongSanPhamResult> blsp = new ArrayList<>();
+        try{
+            danhMucCongViecRepository.bangLuongSanPham().forEach(o -> {
+                Object[] ox = (Object []) o;
+                String ngaySinh = ox[4].toString();
+                String ngayThucHien = ox[1].toString();
+                blsp.add(new BangLuongSanPhamResult((String) ox[0],LocalDate.parse(ngayThucHien),
+                        (String) ox[2],(String) ox[3],LocalDate.parse(ngaySinh),
+                        (String) ox[5],(String) ox[6],
+                        (String) ox[13], (Integer) ox[14],(Double) ox[15]));
+            });
+            return blsp;
+        }catch (Exception e){
+            return blsp;
+        }
     }
 }
